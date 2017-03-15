@@ -8,6 +8,7 @@
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
           @include('layouts.main._sidebar')
         </nav>
+
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
           <div class="">
             <h1 class="bg-faded p-3">@yield('page-title')</h1>
