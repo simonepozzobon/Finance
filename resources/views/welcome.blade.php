@@ -1,18 +1,29 @@
-@extends('layouts.main.index')
-@section('title', 'Home Page')
-@section('page-title', 'Please Login')
-@section('content')
-  <div class="row">
-    <div class="col">
-      <p class="lead text-center mt-5 mb-5">
-        This app is restricted and only available to registered user <br>
-        Login to start using it.<br>
-      </p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4 offset-md-4">
-      <a class="btn btn-lg btn-primary btn-block" href="#">Login</a>
-    </div>
-  </div>
-@endsection
+<!DOCTYPE html>
+<html lang="{{ config('app.locale') }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Laravel</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+
+    </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+            <div class="content">
+              @if (Route::has('login'))
+                  <div class="top-right links">
+                      @if (Auth::check())
+                          <a href="{{ url('/home') }}">Home</a>
+                      @else
+                          <a href="{{ url('/login') }}">Login</a>
+                      @endif
+                  </div>
+              @endif
+            </div>
+        </div>
+    </body>
+</html>
