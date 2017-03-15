@@ -15,6 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/gianni', 'AdminController@index')->name('gianni');
 
+Auth::routes();
 Route::get('/home', 'HomeController@index');
+
+Route::prefix('admin')->group(function () {
+
+  // Auth
+  Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+  Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+  Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+  Route::get('/', 'AdminController@index')->name('admin');
+
+});
