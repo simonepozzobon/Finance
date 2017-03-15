@@ -3,12 +3,21 @@
     <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Reports</a>
+    <a class="nav-link" href="#">Calendario</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Analytics</a>
+    <a class="nav-link" href="#">Email</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Export</a>
+    <a class="nav-link" href="#">Cose Da Fare</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Preventivi</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Fatture</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Tasse</a>
   </li>
 </ul>
