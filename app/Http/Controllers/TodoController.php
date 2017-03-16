@@ -25,13 +25,6 @@ class TodoController extends Controller
     return response()->json(['success' => true]);
   }
 
-  public function destroy($id)
-  {
-    $todo = Todo::findOrFail($id);
-    $todo->delete();
-    return response()->json(['success' => true]);
-  }
-
   public function show($id)
   {
     $todo = Todo::find($id);
@@ -55,5 +48,12 @@ class TodoController extends Controller
     $todo->save();
     return response()->json(['success' => true]);
   }
+
+    public function destroy($id)
+    {
+      $todo = Todo::findOrFail($id);
+      $todo->delete();
+      return response()->json(['success' => true]);
+    }
 
 }

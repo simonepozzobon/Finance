@@ -9,7 +9,7 @@
     <a class="nav-link" href="#">Email</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Projects</a>
+    <a class="nav-link" href="{{ route('project.index') }}">Projects</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="{{ route('todo.index') }}">Todo</a>
