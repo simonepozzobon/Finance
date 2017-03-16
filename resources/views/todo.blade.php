@@ -61,7 +61,7 @@
                     </div>
                     <div class="form-group">
                       <label for="completed">Completed</label>
-                      <input type="text" name="completed" class="form-control" ng-model="todoData.completed">
+                      <md-switch ng-model="todoData.completed" aria-label="Switch 2"></md-switch>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -136,7 +136,7 @@
                               </div>
                               <div class="form-group">
                                 <label for="completed">Completed</label>
-                                <input type="text" name="completed" class="form-control" ng-model="todoData.completed">
+                                <md-switch ng-model="todoData.completed" aria-label="Switch 1"></md-switch>
                               </div>
                           </div>
                           <div class="modal-footer">
@@ -252,11 +252,6 @@
                 $scope.getTodo = function(id) {
                   $http.get('todo/api/'+id+'/edit').then(function(response) {
                     $scope.todoData = response.data;
-                    if ($scope.todoData.completed == true) {
-                      $scope.todoData.completed = 1;
-                    } else if ($scope.todoData.completed == false) {
-                      $scope.todoData.completed = 0;
-                    }
                     console.log($scope.todoData);
                   });
                 };

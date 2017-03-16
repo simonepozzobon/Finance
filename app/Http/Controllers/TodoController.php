@@ -20,7 +20,7 @@ class TodoController extends Controller
     $todo->description = $request->input('description');
     $todo->start_date = $request->input('start_date');
     $todo->end_date = $request->input('end_date');
-    $todo->completed = $request->input('completed');
+    $todo->completed = (int)$request->input('completed');
     $todo->save();
     return response()->json(['success' => true]);
   }
@@ -50,7 +50,7 @@ class TodoController extends Controller
     $todo->description = $request->input('description');
     $todo->start_date = $request->input('start_date');
     $todo->end_date = $request->input('end_date');
-    $todo->completed = $request->input('completed');
+    $todo->completed = (int)$request->input('completed');
     $todo->save();
     return response()->json(['success' => true]);
   }
