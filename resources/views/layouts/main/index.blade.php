@@ -9,8 +9,8 @@
           @include('layouts.main._sidebar')
         </nav>
 
-        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-          <div class="">
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3 mt-5">
+          <div class="mt-2">
             <h1 class="bg-faded p-3">@yield('page-title')</h1>
           </div>
           {{-- Errors Managing System --}}

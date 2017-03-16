@@ -1,6 +1,6 @@
 <ul class="nav nav-pills flex-column">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+    <a class="nav-link" href="#">Overview</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Calendario</a>
@@ -9,7 +9,7 @@
     <a class="nav-link" href="#">Email</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Cose Da Fare</a>
+    <a class="nav-link" href="{{ route('todo.index') }}">Cose Da Fare</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Preventivi</a>
