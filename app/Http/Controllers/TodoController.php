@@ -20,7 +20,7 @@ class TodoController extends Controller
     $todo->description = $request->input('description');
     $todo->start_date = $request->input('start_date');
     $todo->end_date = $request->input('end_date');
-    $todo->completed = (int)$request->input('completed');
+    $todo->completed = $request->input('completed') === 'true' ? 1 : 0;
     $todo->save();
     return response()->json(['success' => true]);
   }
@@ -34,7 +34,8 @@ class TodoController extends Controller
 
   public function show($id)
   {
-    return $id;
+    $todo = Todo::find($id);
+    return response($todo);
   }
 
   public function edit($id)
@@ -50,7 +51,7 @@ class TodoController extends Controller
     $todo->description = $request->input('description');
     $todo->start_date = $request->input('start_date');
     $todo->end_date = $request->input('end_date');
-    $todo->completed = (int)$request->input('completed');
+    $todo->completed = $request->input('completed') === 'true' ? 1 : 0;
     $todo->save();
     return response()->json(['success' => true]);
   }

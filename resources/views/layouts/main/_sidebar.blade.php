@@ -9,7 +9,10 @@
     <a class="nav-link" href="#">Email</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('todo.index') }}">Cose Da Fare</a>
+    <a class="nav-link" href="#">Projects</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('todo.index') }}">Todo</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Preventivi</a>
