@@ -9,7 +9,7 @@ class TodoController extends Controller
 {
   public function index()
   {
-    $todo = Todo::all();
+    $todo = Todo::with('status')->get();
     return response()->json($todo);
   }
 

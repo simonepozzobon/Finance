@@ -10,4 +10,9 @@ class Todo extends Model
     protected $casts = [
       'completed' => 'boolean',
     ];
+
+    public function status()
+    {
+      return $this->belongsTo('App\Status');
+    }
 }

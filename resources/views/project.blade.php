@@ -51,8 +51,14 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="completed">Completed</label>
-                      <md-switch ng-model="projectData.completed" aria-label="Switch 2"></md-switch>
+                      <label for="client_id">Client</label>
+                      <input type="text" name="client_id" class="form-control" ng-model="projectData.client_id">
+                    </div>
+                    <div class="form-group">
+                      <label for="status_id">Status</label>
+                      <select class="form-control" name="status_id" ng-model="projectData.status_id">
+                        <option ng-repeat="status in statuses" value="@{{ status.id }}" class="text-@{{ status.class }}">@{{ status.message }}</option>
+                      </select>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -79,17 +85,20 @@
               <a href="#" ng-click="sortType = 'end_date'; sortReverse = !sortReverse">End Date</a>
             </th>
             <th>
+              <a href="#" ng-click="sortType = 'client'; sortReverse = !sortReverse">Client</a>
+            </th>
+            <th>
               <a href="#" ng-click="sortType = 'completed'; sortReverse = !sortReverse">Status</a>
             </th>
             <th>Tools</th>
           </thead>
           <tbody>
             <tr ng-repeat="project in projects | orderBy:sortType:sortReverse">
-              <td class="align-middle">/% project.name %/</td>
-              <td class="align-middle">/% project.start_date %/</td>
-              <td class="align-middle">/% project.end_date %/</td>
-              <td class="align-middle" ng-if="project.completed == true"><span class="align-middle alert alert-success">Completed</span></td>
-              <td class="align-middle" ng-if="project.completed == false"><span class="align-middle alert alert-danger">Incomplete</span></td>
+              <td class="align-middle">@{{ project.name }}</td>
+              <td class="align-middle">@{{ project.start_date }}</td>
+              <td class="align-middle">@{{ project.end_date }}</td>
+              <td class="align-middle">@{{ project.client.name }}</td>
+              <td class="align-middle"><span class="align-middle alert alert-@{{ project.status.class }}">@{{ project.status.message }}</span></td>
               <td class="align-middle">
                 <div class="btn-group" role="group" aria-label="Basic example">
                   {{-- View Modal Trigger --}}
@@ -101,7 +110,7 @@
                     <div class="modal-dialog modal-lg" role="document">
                       <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="projectViewTitle">Edit Project - Id: /% projectData.id %/</h5>
+                            <h5 class="modal-title" id="projectViewTitle">Edit Project - Id: @{{ projectData.id }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -109,30 +118,29 @@
                           <div class="modal-body">
                               <div class="form-group">
                                 <h4>Name</h4>
-                                /% projectData.name %/
+                                @{{ projectData.name }}
                               </div>
                               <div class="form-group">
                                 <h4>Description</h4>
-                                /% projectData.description %/
+                                @{{ projectData.description }}
                               </div>
                               <div class="row">
                                 <div class="col-md-6">
                                   <div class="form-group">
                                     <h4>Start Date</h4>
-                                    /% projectData.start_date %/
+                                    @{{ projectData.start_date }}
                                   </div>
                                 </div>
                                 <div class="col-md-6">
                                   <div class="form-group">
                                     <h4>End Date</h4>
-                                    /% projectData.end_date %/
+                                    @{{ projectData.end_date }}
                                   </div>
                                 </div>
                               </div>
                               <div class="form-group">
-                                <h4 class="mb-4">Completed</h4>
-                                <span ng-if="project.completed == true" class="align-middle alert alert-success">Completed</span>
-                                <span ng-if="project.completed == false" class="align-middle alert alert-danger">Incomplete</span>
+                                <h4 class="mb-4">Status</h4>
+                                <span class="align-middle alert alert-@{{ projectData.status.class }}">@{{ projectData.status.message }}</span>
                               </div>
                           </div>
                           <div class="modal-footer">
@@ -153,7 +161,7 @@
                           {{ csrf_field() }}
                           {{ method_field('post') }}
                           <div class="modal-header">
-                            <h5 class="modal-title" id="projectUpdateTitle">Edit Project - Id: /% projectData.id %/</h5>
+                            <h5 class="modal-title" id="projectUpdateTitle">Edit Project - Id: @{{ projectData.id }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -182,8 +190,16 @@
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label for="completed">Completed</label>
-                                <md-switch ng-model="projectData.completed" aria-label="Switch 1"></md-switch>
+                                <label for="client_id">Client</label>
+                                <select class="form-control" name="client_id" ng-model="projectData.client_id">
+                                  <option ng-repeat="client in clientsData" value="@{{ client.id }}">@{{ client.name }}</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="status_id">Status</label>
+                                <select class="form-control" name="status_id" ng-model="projectData.status_id">
+                                  <option ng-repeat="status in statusesData" value="@{{ status.id }}" class="text-@{{ status.class }}">@{{ status.message }}</option>
+                                </select>
                               </div>
                           </div>
                           <div class="modal-footer">
@@ -255,7 +271,9 @@
                 $scope.sortReverse  = false;
                 // get function from factory of the Project service
                 Project.get().then(function(response) {
-                    $scope.projects = response.data;
+                    $scope.projects = response.data.project;
+                    $scope.statuses = response.data.status;
+                    $scope.clients = response.data.client;
                   });
 
                 $scope.submitProject = function() {
@@ -265,11 +283,22 @@
                               jQuery('#projectCreate').modal('hide');
                             });
                             Project.get().then(function(response) {
-                              $scope.projects = response.data;
+                              $scope.projects = response.data.project;
+                              $scope.statuses = response.data.status;
+                              $scope.clients = response.data.client;
                             });
                           }, function errorCallback(response) {
                             console.log(response);
                           });
+                };
+
+                $scope.getProject = function(id) {
+                  $http.get('{{ route('project-api.index') }}/'+id+'/edit').then(function(response) {
+                    console.log(response.data.status);
+                    $scope.projectData = response.data.project;
+                    $scope.statusesData = response.data.status;
+                    $scope.clientsData = response.data.client;
+                  });
                 };
 
                 $scope.editProject = function(id) {
@@ -279,21 +308,15 @@
                               jQuery('#projectUpdate').modal('hide');
                             });
                             Project.get().then(function(response) {
-                              $scope.projects = response.data;
+                              $scope.projects = response.data.project;
                             });
                           }, function errorCallback(response) {
                             console.log(response);
                           });
                 };
 
-                $scope.getProject = function(id) {
-                  $http.get('{{ route('project-api.index') }}'+id+'/edit').then(function(response) {
-                    $scope.projectData = response.data;
-                  });
-                };
-
                 $scope.showProject = function(id) {
-                  $http.get('{{ route('project-api.index') }}'+id).then(function(response) {
+                  $http.get('{{ route('project-api.index') }}/'+id).then(function(response) {
                     $scope.projectData = response.data;
                   });
                 }
@@ -302,7 +325,7 @@
                   Project.destroy(id)
                           .then(function successCallback(response) {
                             Project.get().then(function(response) {
-                              $scope.projects = response.data;
+                              $scope.projects = response.data.project;
                             });
                           }, function errorCallback(response) {
                             console.log(response);
@@ -344,11 +367,7 @@
                 'projectService',
                 'ngMaterial',
               ])
-              .constant("CSRF_TOKEN", '{{ csrf_token() }}')
-              .config(function($interpolateProvider) {
-                $interpolateProvider.startSymbol('/%');
-                $interpolateProvider.endSymbol('%/');
-              });
+              .constant("CSRF_TOKEN", '{{ csrf_token() }}');
 
 
     </script>

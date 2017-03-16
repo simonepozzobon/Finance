@@ -28,3 +28,13 @@ Route::prefix('project')->group(function() {
     return view('project');
   })->name('project.index');
 });
+
+Route::prefix('settings')->group(function() {
+  Route::prefix('status')->group(function() {
+
+    Route::resource('/status-api', 'StatusController@index', ['except' => ['create']]);
+    Route::get('/', function() {
+      return view('settings.status');
+    })->name('status.index');
+  });
+});

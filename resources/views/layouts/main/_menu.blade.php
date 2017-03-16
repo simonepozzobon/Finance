@@ -10,7 +10,12 @@
             <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Settings</a>
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Settings
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Status Messages</a>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Profile</a>

@@ -15,6 +15,9 @@
     <a class="nav-link" href="{{ route('todo.index') }}">Todo</a>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="#">Clienti</a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" href="#">Preventivi</a>
   </li>
   <li class="nav-item">
