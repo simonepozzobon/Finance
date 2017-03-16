@@ -1,29 +1,32 @@
 <ul class="nav nav-pills flex-column">
   <li class="nav-item">
-    <a class="nav-link" href="#">Overview</span></a>
+    <a href="#" class="nav-link {{ $page_active === "overview" ? "active" : "" }}">Overview</span></a>
+  </li>
+  <hr>
+  <li class="nav-item">
+    <a href="#" class="nav-link {{ $page_active === "calendar" ? "active" : "" }}">Calendario</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Calendario</a>
+    <a href="#" class="nav-link {{ $page_active === "email" ? "active" : "" }}">Email</a>
+  </li>
+  <hr>
+  <li class="nav-item">
+    <a href="{{ route('todo.index') }}" class="nav-link {{ $page_active === "todo" ? "active" : "" }}">Todo</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Email</a>
+    <a href="{{ route('project.index') }}" class="nav-link {{ $page_active === "projects" ? "active" : "" }}">Projects</a>
+  </li>
+  <hr>
+  <li class="nav-item">
+    <a href="#" class="nav-link {{ $page_active === "clients" ? "active" : "" }}">Clienti</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('project.index') }}">Projects</a>
+    <a href="#" class="nav-link {{ $page_active === "quotes" ? "active" : "" }}">Preventivi</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('todo.index') }}">Todo</a>
+    <a href="#" class="nav-link {{ $page_active === "bills" ? "active" : "" }}">Fatture</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Clienti</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Preventivi</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Fatture</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Tasse</a>
+    <a href="#" class="nav-link {{ $page_active === "taxes" ? "active" : "" }}">Tasse</a>
   </li>
 </ul>

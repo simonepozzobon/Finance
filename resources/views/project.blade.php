@@ -1,4 +1,4 @@
-@extends('layouts.main.index')
+@extends('layouts.main.index', ['page_active' => 'projects'])
 @section('title', 'Projects')
 @section('page-title', 'Projects')
 @section('stylesheets')

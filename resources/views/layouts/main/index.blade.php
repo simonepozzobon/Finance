@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <div class="row">
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
-          @include('layouts.main._sidebar')
+          @include('layouts.main._sidebar', ['page_active' => $page_active])
         </nav>
 
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3 mt-5">
