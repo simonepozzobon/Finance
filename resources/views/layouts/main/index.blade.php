@@ -5,11 +5,17 @@
     @include('layouts.main._menu')
     <div class="container-fluid">
       <div class="row">
-        <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
-          @include('layouts.main._sidebar', ['page_active' => $page_active])
-        </nav>
+        @if (isset($page_active))
+          <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+            @include('layouts.main._sidebar', ['page_active' => $page_active])
+          </nav>
+        @endif
 
-        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3 mt-5">
+        @if (isset($page_active))
+          <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3 mt-5">
+        @else
+          <main class="col pt-3 mt-5">
+        @endif
           <div class="mt-2">
             <h1 class="bg-faded p-3">@yield('page-title')</h1>
           </div>

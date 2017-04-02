@@ -4,7 +4,7 @@
   </li>
   <hr>
   <li class="nav-item">
-    <a href="#" class="nav-link {{ $page_active === "calendar" ? "active" : "" }}">Calendario</a>
+    <a href="#" class="nav-link {{ $page_active === "calendar" ? "active" : "" }}">Calendar</a>
   </li>
   <li class="nav-item">
     <a href="#" class="nav-link {{ $page_active === "email" ? "active" : "" }}">Email</a>
@@ -18,15 +18,15 @@
   </li>
   <hr>
   <li class="nav-item">
-    <a href="#" class="nav-link {{ $page_active === "clients" ? "active" : "" }}">Clienti</a>
+    <a href="{{ route('client.index') }}" class="nav-link {{ $page_active === "clients" ? "active" : "" }}">Clients</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link {{ $page_active === "quotes" ? "active" : "" }}">Preventivi</a>
+    <a href="#" class="nav-link {{ $page_active === "quotes" ? "active" : "" }}">Quotes</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link {{ $page_active === "bills" ? "active" : "" }}">Fatture</a>
+    <a href="{{ route('invoice.index') }}" class="nav-link {{ $page_active === "invoices" ? "active" : "" }}">Invoices</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link {{ $page_active === "taxes" ? "active" : "" }}">Tasse</a>
+    <a href="#" class="nav-link {{ $page_active === "taxes" ? "active" : "" }}">Taxes</a>
   </li>
 </ul>

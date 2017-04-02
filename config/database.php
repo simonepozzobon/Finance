@@ -39,7 +39,7 @@ return [
             'port' => env('DB_PORT', '8889'),
             'database' => env('DB_DATABASE', 'gestionale'),
             'username' => env('DB_USERNAME', 'gestionale'),
-            'password' => env('DB_PASSWORD', 's1m0n3'),
+            'password' => env('DB_PASSWORD', 'password'),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => 'gst_',
