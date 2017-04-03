@@ -7,16 +7,18 @@ use PhpImap\Mailbox;
 use PhpImap\IncomingMail;
 use PhpImap\IncomingMailAttachment;
 use App\EmailSetting;
+use App\Email;
 use Illuminate\Http\Request;
 
 class EmailController extends Controller
 {
     public function index() {
+
       // prendo le impostazioni
       $settings = EmailSetting::first();
 
       // Inizio la connessione Imap
-      $mailbox = new Mailbox('{imap.gmail.com:993/imap/ssl}INBOX', 'h57.milano@gmail.com', 'tarantino');
+      $mailbox = new Mailbox('{imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX', 'h57.milano@gmail.com', 'tarantino');
 
       // Prendo le email e le inserisco in una variabile
       $mailsIds = $mailbox->searchMailbox('ALL');
@@ -28,8 +30,13 @@ class EmailController extends Controller
         $mails[$key]->date = $date->diffForHumans();
       }
 
-      // dd($mails);
+      // Whitout folder in the first option
+      $mailbox_folders = new Mailbox('{imap.gmail.com:993/imap/ssl/novalidate-cert}', 'h57.milano@gmail.com', 'tarantino');
+      $folders = $mailbox_folders->getListingFolders();
 
-      return view('emails')->with('mails', $mails);
+      $model = new Email;
+      $nice_folders = $model->niceFolders($folders, false);
+
+      return view('emails')->with('email_folders', $folders)->with('nice_email_folders', $nice_folders)->with('mails', $mails);
     }
 }
