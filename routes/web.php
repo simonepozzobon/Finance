@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Email Client
+Route::prefix('emails')->group(function(){
+  Route::get('/', 'EmailController@index')->name('emails.index');
+});
+
 // ToDo List
 Route::prefix('todo')->group(function() {
   Route::resource('todo-api', 'TodoController', ['except' => ['create']]);

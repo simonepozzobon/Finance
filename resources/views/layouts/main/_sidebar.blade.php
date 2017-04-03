@@ -7,7 +7,7 @@
     <a href="#" class="nav-link {{ $page_active === "calendar" ? "active" : "" }}">Calendar</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link {{ $page_active === "email" ? "active" : "" }}">Email</a>
+    <a href="{{ route('emails.index') }}" class="nav-link {{ $page_active === "emails" ? "active" : "" }}">Email</a>
   </li>
   <hr>
   <li class="nav-item">
