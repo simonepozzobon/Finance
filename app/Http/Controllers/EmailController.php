@@ -23,10 +23,18 @@ class EmailController extends Controller
       // Prendo le email e le inserisco in una variabile
       $mailsIds = $mailbox->searchMailbox('ALL');
 
-      foreach ($mailsIds as $key => $mail) {
-        $mails[$key] = $mailbox->getMail($mailsIds[$key]);
+      // foreach ($mailsIds as $key => $mail) {
+      //   $mails[$key] = $mailbox->getMail($mailsIds[$key]);
+      //   // convert date with carbon
+      //   $date = Carbon::createFromFormat('Y-m-d H:i:s', $mails[$key]->date);
+      //   $mails[$key]->date = $date->diffForHumans();
+      // }
+
+      $mails = $mailbox->getMailsInfo($mailsIds);
+      foreach ($mails as $key => $mail) {
         // convert date with carbon
-        $date = Carbon::createFromFormat('Y-m-d H:i:s', $mails[$key]->date);
+        $date = date('Y-m-d H:i:s', strtotime($mails[$key]->date));
+        $date = Carbon::createFromFormat('Y-m-d H:i:s', $date);
         $mails[$key]->date = $date->diffForHumans();
       }
 

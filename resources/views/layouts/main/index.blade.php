@@ -6,9 +6,9 @@
     <div class="container-fluid">
       <div class="row">
         @if (isset($page_active))
-          <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+          {{-- <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar"> --}}
             @include('layouts.main._sidebar', ['page_active' => $page_active])
-          </nav>
+          {{-- </nav> --}}
         @endif
 
         @if (isset($page_active))

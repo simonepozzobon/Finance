@@ -19,9 +19,8 @@
             @foreach ($mails as $key => $mail)
               <tr>
                 <td class="align-middle">{{ $mail->date }}</td>
-                <td class="align-middle">{{ $mail->headers->from[0]->personal }}</td>
-                <td class="align-middle"><b>{{ substr(strip_tags($mail->headers->subject), 0, 20) }}{{ strlen(strip_tags($mail->headers->subject)) > 20 ? '...' : "" }}<b></td>
-                <td class="align-middle">{{ substr(strip_tags($mail->textPlain), 0, 40) }}{{ strlen(strip_tags($mail->textPlain)) > 40 ? '...' : "" }}</td>
+                <td class="align-middle">{{ $mail->from }}</td>
+                <td class="align-middle"><b>{{ substr(strip_tags($mail->subject), 0, 20) }}{{ strlen(strip_tags($mail->subject)) > 20 ? '...' : "" }}<b></td>
                 <td class="align-middle">
                   <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" name="button" class="btn btn-info">Read</button>
